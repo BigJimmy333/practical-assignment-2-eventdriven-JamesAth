@@ -26,3 +26,22 @@ Or Epsilon Transition that takes them into another place
 - But does that not make the petri net unbounded because that place can increase infinitely?
 
 I assume there is no starting place and the petri net starts with no trains
+
+## Transitions Needed
+Left to Right (South)
+Can enter into sections 1 & 3
+Can exit from section 4,8,9 & 11
+- 1-5, 5-8, 5-9
+- 3-4
+- 3-7, 7-11
+
+
+Right to Left (North)
+Can enter in sections 4, 9, 10 & 11
+Can exit from sections 2 & 3
+- 4-3
+- 9-6, 6-2
+- 10-6
+- 11-7, 7-3
+
+These are the places and transactions that are required
