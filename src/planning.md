@@ -45,3 +45,9 @@ Can exit from sections 2 & 3
 - 11-7, 7-3
 
 These are the places and transactions that are required
+
+
+## Diagram version 1
+The current diagram has the above transactions and places but it does not include 
+- I will label transactions when done
+- I added colors because passengers need priority and its easier to see purple needs priority
