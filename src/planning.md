@@ -51,3 +51,6 @@ These are the places and transactions that are required
 The current diagram has the above transactions and places but it does not include 
 - I will label transactions when done
 - I added colors because passengers need priority and its easier to see purple needs priority
+
+Junctions 
+- Im going to color in the places that are fine to make it clearer to me
