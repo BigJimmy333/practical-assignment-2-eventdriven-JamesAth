@@ -54,3 +54,12 @@ The current diagram has the above transactions and places but it does not includ
 
 Junctions 
 - Im going to color in the places that are fine to make it clearer to me
+
+## Diagram junctions
+If your in P3 or P4 you cannot cross if there is a passenger train in P1 or P6 because they have priority
+- Need a way to determine this in the design
+
+P1 and P6 mutexs determine there if there is a train respectfully in P1 and P6
+If the mutex is empty that means a train is in there
+If the mutex is full that means a train is not there
+We can then use those mutexs to enable the freight train transitions 
