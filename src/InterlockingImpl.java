@@ -26,7 +26,16 @@ public class InterlockingImpl implements Interlocking {
 
     @Override
     public String getSection(int trackSection) throws IllegalArgumentException {
-        return null;
+
+        //If the place is not in the map then throw an error
+        if (!places.containsKey(trackSection)) {
+            throw new IllegalArgumentException("Track section " + trackSection + " does not exist.");
+        }
+
+        //Otherwise return the place
+        String place = places.get(trackSection);
+
+        return place;
        
     }
 
