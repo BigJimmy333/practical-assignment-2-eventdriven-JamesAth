@@ -63,3 +63,6 @@ P1 and P6 mutexs determine there if there is a train respectfully in P1 and P6
 If the mutex is empty that means a train is in there
 If the mutex is full that means a train is not there
 We can then use those mutexs to enable the freight train transitions 
+
+## Code implementation 
+Need to first implement the interlocking interface and work on those methods

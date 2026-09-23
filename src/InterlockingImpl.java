@@ -32,10 +32,10 @@ public class InterlockingImpl implements Interlocking {
             throw new IllegalArgumentException("Track section " + trackSection + " does not exist.");
         }
 
-        //Otherwise return the place
-        String place = places.get(trackSection);
+        //Otherwise return the train name
+        String trainName = places.get(trackSection);
 
-        return place;
+        return trainName;
        
     }
 
