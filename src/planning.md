@@ -66,3 +66,22 @@ We can then use those mutexs to enable the freight train transitions
 
 ## Code implementation 
 Need to first implement the interlocking interface and work on those methods
+
+
+Get section returns the trainName
+Get trainName returns the place
+- Feels like these should be switched around
+
+Get trainName
+- Accepts the trains name
+- Returns the place the track is on
+- Returns -1 if the train is no longer in the "rail corridor"
+
+So the method needs to keep a list of trains that have entered the system
+If there on a place we return that
+If they have entered but are no longer on a place return -1
+- Can keep a list of trains that entered
+- Loop through the places map to see if its on a place
+- If its not there return -1
+
+There will also be the case of a train not existing, and that should return null or throw an error
