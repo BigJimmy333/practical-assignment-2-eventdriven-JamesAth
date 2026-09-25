@@ -72,7 +72,7 @@ Get section returns the trainName
 Get trainName returns the place
 - Feels like these should be switched around
 
-Get trainName
+# Get trainName
 - Accepts the trains name
 - Returns the place the track is on
 - Returns -1 if the train is no longer in the "rail corridor"
@@ -85,3 +85,10 @@ If they have entered but are no longer on a place return -1
 - If its not there return -1
 
 There will also be the case of a train not existing, and that should return null or throw an error
+
+# Add Train
+Throws two exceptions
+- if the train name is already in the list
+- If the section is occupied
+
+If those are not thrown we can add the train

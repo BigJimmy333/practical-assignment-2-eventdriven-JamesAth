@@ -19,6 +19,22 @@ public class InterlockingImpl implements Interlocking {
 
     @Override
     public void addTrain(String trainName, int entryTrackSection, int destinationTrackSection) throws IllegalArgumentException, IllegalStateException {
+        //If a name is in use it can't be used again
+        //May need to be changed if the same train can come back after leaving
+        if(trainsEntered.contains(trainName)){
+            throw new IllegalArgumentException("Train name: " + trainName + " Has already entered the system");
+        }
+
+        //Get the train and check if its occupying a place
+        String train = places.get(entryTrackSection);
+
+        if(train != null){
+            throw new IllegalStateException("Place: " + entryTrackSection + " Is already occupied");
+        }
+
+        //If no exception is thrown, add the train into the place and the trains entered list
+        places.put(entryTrackSection, trainName);
+        trainsEntered.add(trainName);
         
     }
 
