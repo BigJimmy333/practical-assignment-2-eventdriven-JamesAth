@@ -92,3 +92,15 @@ Throws two exceptions
 - If the section is occupied
 
 If those are not thrown we can add the train
+
+# Move Train
+To implement move train we need to create the transitions from the petri net into code
+This means a structure is needed which says which places lead to which
+- I believe the easiest way to do this is to split into dictionaries, a North and South
+
+
+There are finite starting and ending positions so that needs to be validated.
+-  With the routes in place, in addTrain() if the destination cannot be reached from the entry
+and error needs to be thrown
+- A train can only move if the section it is moving to is empty
+- When a train reaches its destination, its removed when that transition is fired and will return -1

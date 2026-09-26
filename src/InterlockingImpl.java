@@ -10,6 +10,10 @@ public class InterlockingImpl implements Interlocking {
     //Keeps track of all the trains that have entered
     private List<String> trainsEntered = new ArrayList<>();
 
+    //The paths a train can take
+    private Map<Integer, List<Integer>> southPath = new HashMap<>();
+    private Map<Integer, List<Integer>> northPath = new HashMap<>();
+
     public InterlockingImpl() {
         //11 because theres 11 places in the petri net
         for (int i = 1; i <= 11; i++){
