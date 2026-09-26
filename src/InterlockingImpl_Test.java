@@ -29,4 +29,14 @@ public class InterlockingImpl_Test {
         interlockingImpl.getTrain("Train 33");
     }
 
+    // === ADD TRAIN TESTS ===
+    //Test when adding a train, it returns its place and its name 
+    @Test
+    public void testAddTrain(){
+        InterlockingImpl interlockingImpl = new  InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 3, 0);
+        assertEquals("Train 1", interlockingImpl.getSection(3));
+        assertEquals(3, interlockingImpl.getTrain("Train 1"));
+    }
+
 }

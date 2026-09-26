@@ -73,7 +73,7 @@ public class InterlockingImpl implements Interlocking {
         //Key = place
         //Value = train name
         for (Map.Entry<Integer, String> entry : places.entrySet()) {
-            if(entry.getValue().contains(trainName)){
+            if(trainName.equals(entry.getValue())){
                 return entry.getKey();
             }
         }
