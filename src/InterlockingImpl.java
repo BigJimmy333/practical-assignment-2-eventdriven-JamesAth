@@ -19,6 +19,20 @@ public class InterlockingImpl implements Interlocking {
         for (int i = 1; i <= 11; i++){
             places.put(i, null);
         }
+
+        //The south paths that can be taken 
+        southPath.put(1, List.of(5));
+        southPath.put(5, List.of(8,9));
+        southPath.put(3, List.of(4,7));
+        southPath.put(7, List.of(11));
+
+        //The north paths that can be taken
+        northPath.put(4, List.of(3));
+        northPath.put(9, List.of(6));
+        northPath.put(6, List.of(2));
+        northPath.put(10, List.of(6));
+        northPath.put(11, List.of(7));
+        northPath.put(7, List.of(3));
     }
 
     @Override
