@@ -39,4 +39,12 @@ public class InterlockingImpl_Test {
         assertEquals(3, interlockingImpl.getTrain("Train 1"));
     }
 
+    //Test if adding the same train twice throws an exception 
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddSameTrain(){
+        InterlockingImpl interlockingImpl = new  InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 3, 0);
+        interlockingImpl.addTrain("Train 1", 3, 0);
+    }
+
 }
