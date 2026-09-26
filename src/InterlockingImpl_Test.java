@@ -47,4 +47,12 @@ public class InterlockingImpl_Test {
         interlockingImpl.addTrain("Train 1", 3, 0);
     }
 
+    //Test if adding a train to an already occupied section throws an exception 
+    @Test(expected = IllegalStateException.class)
+    public void testAddTrainToSamePlace(){
+        InterlockingImpl interlockingImpl = new  InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 3, 0);
+        interlockingImpl.addTrain("Train 2", 3, 0);
+    }
+
 }
