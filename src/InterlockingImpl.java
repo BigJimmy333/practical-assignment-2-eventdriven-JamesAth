@@ -85,6 +85,13 @@ public class InterlockingImpl implements Interlocking {
 
     @Override
     public int moveTrains(String[] trainNames) throws IllegalArgumentException {
+        for(String name : trainNames){
+            int section = getTrain(name);
+            if(section == -1){
+                throw new IllegalArgumentException(name + " is not in the system");
+            }
+        }
+
         return 0;
         
     }
