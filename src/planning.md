@@ -87,11 +87,14 @@ If they have entered but are no longer on a place return -1
 There will also be the case of a train not existing, and that should return null or throw an error
 
 # Add Train
-Throws two exceptions
+Throws multiple exceptions
 - if the train name is already in the list
 - If the section is occupied
+- If the entry position is not a starting position
+- If the destination cannot be reached by the entry point
 
-If those are not thrown we can add the train
+If those are not thrown we can add the train and add its path to a routes dictionary
+- This dictionary will be used by moveTrain() to move the train around
 
 # Move Train
 To implement move train we need to create the transitions from the petri net into code

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import org.w3c.dom.Node;
 
 public class InterlockingImpl implements Interlocking {
 
@@ -14,6 +13,8 @@ public class InterlockingImpl implements Interlocking {
     private Map<Integer, String> places = new HashMap<>();
     //Keeps track of all the trains that have entered
     private List<String> trainsEntered = new ArrayList<>();
+    //Keeps track of where a specific train can move
+    private Map<String, List<Integer>> routes = new HashMap<>();
 
     //The paths a train can take
     private Map<Integer, List<Integer>> southPath = new HashMap<>();
@@ -70,9 +71,15 @@ public class InterlockingImpl implements Interlocking {
             throw new IllegalArgumentException("Place : " + entryTrackSection + " is not a valid starting track");
         }
 
+        //If there is no valid path, throw an exception 
+        if(trainRoute == null){
+            throw new IllegalArgumentException("There is no path from: " + entryTrackSection + "To: " + destinationTrackSection);
+        }
+
         //If no exception is thrown, add the train into the place and the trains entered list
         places.put(entryTrackSection, trainName);
         trainsEntered.add(trainName);
+        routes.put(trainName, trainRoute);
         
     }
 
