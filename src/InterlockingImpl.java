@@ -85,10 +85,25 @@ public class InterlockingImpl implements Interlocking {
 
     @Override
     public int moveTrains(String[] trainNames) throws IllegalArgumentException {
+        //Keep track of the amount of trains that have moved
+        int trainsMoved = 0;
+
+        //Loop through the trains to move, if its not in the system throw error
         for(String name : trainNames){
             int section = getTrain(name);
             if(section == -1){
                 throw new IllegalArgumentException(name + " is not in the system");
+            }
+            //If it is in the system get that trains route
+            List<Integer> trainRoute = routes.get(name);
+            //Get the last section of the route and see if its at the end
+            int lastSection = trainRoute.get(trainRoute.size() -1);
+            //If it is the end remove it from the place 
+            //Removing its route is not necessary unless you use the same train name
+            if(section == lastSection){
+                places.put(section, null);
+                routes.remove(name);
+                trainsMoved ++;
             }
         }
 
