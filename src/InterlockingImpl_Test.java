@@ -34,7 +34,7 @@ public class InterlockingImpl_Test {
     @Test
     public void testAddTrain(){
         InterlockingImpl interlockingImpl = new  InterlockingImpl();
-        interlockingImpl.addTrain("Train 1", 3, 0);
+        interlockingImpl.addTrain("Train 1", 3, 11);
         assertEquals("Train 1", interlockingImpl.getSection(3));
         assertEquals(3, interlockingImpl.getTrain("Train 1"));
     }
@@ -51,8 +51,8 @@ public class InterlockingImpl_Test {
     @Test(expected = IllegalStateException.class)
     public void testAddTrainToSamePlace(){
         InterlockingImpl interlockingImpl = new  InterlockingImpl();
-        interlockingImpl.addTrain("Train 1", 3, 0);
-        interlockingImpl.addTrain("Train 2", 3, 0);
+        interlockingImpl.addTrain("Train 1", 3, 11);
+        interlockingImpl.addTrain("Train 2", 3, 11);
     }
 
 }
