@@ -55,8 +55,19 @@ public class InterlockingImpl implements Interlocking {
             throw new IllegalStateException("Place: " + entryTrackSection + " Is already occupied");
         }
 
-        if(entryTrackSection == 1 || entryTrackSection == 2){
-            
+        //Route the train should take
+        List<Integer> trainRoute;
+        //South entries
+        if(entryTrackSection == 1 || entryTrackSection == 3){
+            trainRoute = getPath(entryTrackSection, destinationTrackSection, southPath);
+        }
+
+        //North entries
+        else if (entryTrackSection == 4 || entryTrackSection == 9 || entryTrackSection == 10 || entryTrackSection == 11) {
+            trainRoute = getPath(entryTrackSection, destinationTrackSection, northPath);
+        }
+        else {
+            throw new IllegalArgumentException("Place : " + entryTrackSection + " is not a valid starting track");
         }
 
         //If no exception is thrown, add the train into the place and the trains entered list
