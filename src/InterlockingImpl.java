@@ -126,20 +126,42 @@ public class InterlockingImpl implements Interlocking {
 
             //If a route is found create the path and return it
             if(section.equals(destinationTrackSection)){
+                //Build the path in this variable
                 ArrayList<Integer> entryToDestination = new ArrayList<>();
+                //The destination, used to walk backwards to get to the start
                 Integer destination = destinationTrackSection;
 
                 while(destination != null){
+                    //Add to the path
                     entryToDestination.add(destination);
+                    //Use the key of where you are and get the value of where you can go
                     destination = route.get(destination);
                 }
 
+                //Reverse because its build backwards
                 Collections.reverse(entryToDestination);
                 return entryToDestination;
             }
-        
-        }
 
+            //If not keep going through the path to see if a destination can be found
+            //Get the list of sections you can explore from the current section
+            List<Integer> nextSections = path.get(section);
+            //If it leads somewhere explore it
+            if (nextSections != null){
+                //If it leads multiple places go one at a time
+                for(Integer adjacent : nextSections){
+                    //If we have not explored it
+                    if(!visited.contains(adjacent)){
+                        //Add the section as seen
+                        visited.add(adjacent);
+                        //Add the section and where it could be visited from 
+                        route.put(adjacent, section);
+                        //Add the section to the queue
+                        queue.add(adjacent);
+                    }
+                }
+            }
+        }
         return null;
     }
     
