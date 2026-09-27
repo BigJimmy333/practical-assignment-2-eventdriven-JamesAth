@@ -43,8 +43,8 @@ public class InterlockingImpl_Test {
     @Test(expected = IllegalArgumentException.class)
     public void testAddSameTrain(){
         InterlockingImpl interlockingImpl = new  InterlockingImpl();
-        interlockingImpl.addTrain("Train 1", 3, 0);
-        interlockingImpl.addTrain("Train 1", 3, 0);
+        interlockingImpl.addTrain("Train 1", 3, 11);
+        interlockingImpl.addTrain("Train 1", 3, 11);
     }
 
     //Test if adding a train to an already occupied section throws an exception 
@@ -54,5 +54,20 @@ public class InterlockingImpl_Test {
         interlockingImpl.addTrain("Train 1", 3, 11);
         interlockingImpl.addTrain("Train 2", 3, 11);
     }
+
+    //Test if having an incorrect entry track throws an exception
+    @Test(expected = IllegalArgumentException.class)
+    public void testWrongEntryTrack(){
+        InterlockingImpl interlockingImpl = new  InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 5, 11);
+    }
+
+    //Test if a correct start and destination throws an error if they don't connect
+    @Test(expected = IllegalArgumentException.class)
+    public void testWrongPath(){
+        InterlockingImpl interlockingImpl = new  InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 1, 11);
+    }
+
 
 }
