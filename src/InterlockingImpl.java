@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+
+import org.w3c.dom.Node;
 
 public class InterlockingImpl implements Interlocking {
 
@@ -111,7 +114,31 @@ public class InterlockingImpl implements Interlocking {
 
         List<Integer> visited = new ArrayList<Integer>();
 
+        //Keeps track of the path of the sections
         Map<Integer, Integer> route = new HashMap<>();
+
+        queue.add(entryTrackSection);
+        visited.add(entryTrackSection);
+
+        //BFS loop
+        while(!queue.isEmpty()){
+            Integer section = queue.poll();
+
+            //If a route is found create the path and return it
+            if(section.equals(destinationTrackSection)){
+                ArrayList<Integer> entryToDestination = new ArrayList<>();
+                Integer destination = destinationTrackSection;
+
+                while(destination != null){
+                    entryToDestination.add(destination);
+                    destination = route.get(destination);
+                }
+
+                Collections.reverse(entryToDestination);
+                return entryToDestination;
+            }
+        
+        }
 
         return null;
     }
