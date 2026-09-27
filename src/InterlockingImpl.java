@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 public class InterlockingImpl implements Interlocking {
 
@@ -48,6 +50,10 @@ public class InterlockingImpl implements Interlocking {
 
         if(train != null){
             throw new IllegalStateException("Place: " + entryTrackSection + " Is already occupied");
+        }
+
+        if(entryTrackSection == 1 || entryTrackSection == 2){
+            
         }
 
         //If no exception is thrown, add the train into the place and the trains entered list
@@ -97,6 +103,17 @@ public class InterlockingImpl implements Interlocking {
         }
 
         return -1;
+    }
+
+    //A bfs search to find if a given entry section can make it to the destination
+    private List<Integer> getPath(int entryTrackSection, int destinationTrackSection, Map<Integer, List<Integer>> path){
+        Queue<Integer> queue = new LinkedList<Integer>();
+
+        List<Integer> visited = new ArrayList<Integer>();
+
+        Map<Integer, Integer> route = new HashMap<>();
+
+        return null;
     }
     
 }

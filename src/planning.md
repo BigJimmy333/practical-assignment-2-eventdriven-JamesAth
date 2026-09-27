@@ -100,7 +100,12 @@ This means a structure is needed which says which places lead to which
 
 
 There are finite starting and ending positions so that needs to be validated.
--  With the routes in place, in addTrain() if the destination cannot be reached from the entry
-and error needs to be thrown
+-  With the routes in place, in addTrain() if the destination cannot be reached from the entry an error needs to be thrown
 - A train can only move if the section it is moving to is empty
 - When a train reaches its destination, its removed when that transition is fired and will return -1
+
+
+# GetPath
+This is a bfs search in order to find if a destination section can be reached from an entry position
+- If not we throw an error
+- If so, we can use this to move a train to its next section
