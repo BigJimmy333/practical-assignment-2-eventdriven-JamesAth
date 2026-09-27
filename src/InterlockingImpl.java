@@ -105,9 +105,22 @@ public class InterlockingImpl implements Interlocking {
                 routes.remove(name);
                 trainsMoved ++;
             }
+            else {
+                //Get where you are currently in the list index wise
+                int currentIndex = trainRoute.indexOf(section);
+                //Get the place where you need to go next
+                int nextSection = trainRoute.get(currentIndex + 1);
+                //If there is no train in the next section 
+                if (places.get(nextSection) == null){
+                    //Move there
+                    places.put(section, null);
+                    places.put(nextSection, name);
+                    trainsMoved++;
+                }
+            }
         }
 
-        return 0;
+        return trainsMoved;
         
     }
 
