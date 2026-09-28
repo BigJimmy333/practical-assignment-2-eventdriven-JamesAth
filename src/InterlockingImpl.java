@@ -87,6 +87,8 @@ public class InterlockingImpl implements Interlocking {
     public int moveTrains(String[] trainNames) throws IllegalArgumentException {
         //Keep track of the amount of trains that have moved
         int trainsMoved = 0;
+        //Keep track of where each train intends to go
+        Map<String, Integer> trainsDestination = new HashMap<>();
 
         //Loop through the trains to move, if its not in the system throw error
         for(String name : trainNames){

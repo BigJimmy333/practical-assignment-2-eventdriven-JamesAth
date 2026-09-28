@@ -117,3 +117,16 @@ as well as there destination point
 This is a bfs search in order to find if a destination section can be reached from an entry position
 - If not we throw an error
 - If so, we can use this to move a train to its next section
+
+
+# Additional cases
+A train in a position that frees up a previous position cannot let a train that wants to go in there happen in the same call
+- This makes sense but has not been implemented, currently moveTrains() does one train after the other,
+and if it happens to free a section a train could enter it.
+- Need to decide where each train moves before any train has moved yet
+
+If two trains try to move to the same spot, it results in a deadlock, and neither moves.
+- Need to check the destination of each train that wants to move
+- If two or more have the same destination we do not move any of those trains
+
+
