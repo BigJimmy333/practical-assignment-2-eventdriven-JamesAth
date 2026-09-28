@@ -103,10 +103,9 @@ public class InterlockingImpl implements Interlocking {
             //If it is the end remove it from the place 
             //Removing its route is not necessary unless you use the same train name
             if(section == lastSection){
-                places.put(section, null);
-                routes.remove(name);
-                trainsMoved ++;
+               trainsDestination.put(name, -1);
             }
+
             else {
                 //Get where you are currently in the list index wise
                 int currentIndex = trainRoute.indexOf(section);
@@ -121,13 +120,25 @@ public class InterlockingImpl implements Interlocking {
 
                 //If there is no train in the next section and the junction is not blocked
                 if (places.get(nextSection) == null && !junctionBlocked){
-                    //Move there
-                    places.put(section, null);
-                    places.put(nextSection, name);
-                    trainsMoved++;
+                    trainsDestination.put(name, nextSection);
                 }
 
                 
+            }
+        }
+
+        //Track if multiple trains want the same destination 
+        Map<Integer, Integer> sectionCounter = new HashMap<>();
+        for (Integer section : trainsDestination.values()){
+            //If its -1 they can leave that does not matter
+            if (section != -1){
+                //If the section is already in the map add 1 to it
+                if(sectionCounter.containsKey(section)){
+                    sectionCounter.put(section, sectionCounter.get(section) + 1);
+                //If not add the section and the counter 1
+                } else {
+                    sectionCounter.put(section, 1);
+                }
             }
         }
 
