@@ -144,5 +144,26 @@ public class InterlockingImpl_Test {
         assertEquals(1, moves);
     }
 
+    //Priority testing
+    //A freight train should stay, a passenger train should move
+    @Test 
+    public void testPassengerTrainMovesFirst(){
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 3, 4);
+        interlockingImpl.addTrain("Train 2", 1, 9);
 
+        //Should be one move with only train 2 moving
+        String[] trains = {"Train 1", "Train 2"};
+        int moves = interlockingImpl.moveTrains(trains);
+        assertEquals(3, interlockingImpl.getTrain("Train 1"));
+        assertEquals(5, interlockingImpl.getTrain("Train 2"));
+        assertEquals(1, moves);
+
+        //Both trains can move now because there is no passenger train on 1 or 6
+        moves = interlockingImpl.moveTrains(trains);
+         assertEquals(4, interlockingImpl.getTrain("Train 1"));
+         assertEquals(9, interlockingImpl.getTrain("Train 2"));
+         assertEquals(2, moves);
+
+    }
 }
