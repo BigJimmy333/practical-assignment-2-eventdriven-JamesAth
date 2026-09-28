@@ -65,9 +65,36 @@ public class InterlockingImpl_Test {
     //Test if a correct start and destination throws an error if they don't connect
     @Test(expected = IllegalArgumentException.class)
     public void testWrongPath(){
-        InterlockingImpl interlockingImpl = new  InterlockingImpl();
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
         interlockingImpl.addTrain("Train 1", 1, 11);
     }
 
+    // === MOVE TRAIN TESTS ===
+    //Tests the flow of the move train function from start to finish
+    @Test 
+    public void moveTrain(){
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 3, 11);
+
+        String[] trainNames = {"Train 1"};
+
+        //After one move should go 3-7
+        int moves = interlockingImpl.moveTrains(trainNames);
+        assertEquals(7, interlockingImpl.getTrain("Train 1"));
+        //One move should occur
+        assertEquals(1, moves);
+
+        //After two moves should go 7=11
+        moves = interlockingImpl.moveTrains(trainNames);
+        assertEquals(11, interlockingImpl.getTrain("Train 1"));
+        //One move should occur
+        assertEquals(1, moves);
+
+        //After three moves should leave
+        interlockingImpl.moveTrains(trainNames);
+        assertEquals(-1, interlockingImpl.getTrain("Train 1"));
+        //One move should occur
+        assertEquals(1, moves);
+    }
 
 }
