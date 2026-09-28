@@ -91,10 +91,29 @@ public class InterlockingImpl_Test {
         assertEquals(1, moves);
 
         //After three moves should leave
-        interlockingImpl.moveTrains(trainNames);
+        moves = interlockingImpl.moveTrains(trainNames);
         assertEquals(-1, interlockingImpl.getTrain("Train 1"));
         //One move should occur
         assertEquals(1, moves);
+    }
+
+    @Test 
+    public void moveBlockedTrain(){
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 3, 11);
+
+        String[] train1 = {"Train 1"};
+        int moves = interlockingImpl.moveTrains(train1);
+        assertEquals(7, interlockingImpl.getTrain("Train 1"));
+        assertEquals(1, moves);
+
+        interlockingImpl.addTrain("Train 2", 3, 11);
+        String[] train2 = {"Train 2"};
+        moves = interlockingImpl.moveTrains(train2);
+        assertEquals(0, moves);
+
+        assertEquals(7, interlockingImpl.getTrain("Train 1"));
+        assertEquals(3, interlockingImpl.getTrain("Train 2"));
     }
 
 }
