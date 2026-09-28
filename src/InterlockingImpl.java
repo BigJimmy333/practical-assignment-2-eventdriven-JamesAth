@@ -110,13 +110,22 @@ public class InterlockingImpl implements Interlocking {
                 int currentIndex = trainRoute.indexOf(section);
                 //Get the place where you need to go next
                 int nextSection = trainRoute.get(currentIndex + 1);
-                //If there is no train in the next section 
-                if (places.get(nextSection) == null){
+
+                //Need to obtain if the junction is empty so passengers can go first
+                //If a train is going from 3 to 4 or the opposite and 
+                //If a train is either in section 1 or 6 its blocked
+                boolean junctionBlocked = (section == 3 && nextSection == 4 || section == 4 && nextSection == 3)
+                && (getSection(1) != null || getSection(6) != null);
+
+                //If there is no train in the next section and the junction is not blocked
+                if (places.get(nextSection) == null && !junctionBlocked){
                     //Move there
                     places.put(section, null);
                     places.put(nextSection, name);
                     trainsMoved++;
                 }
+
+                
             }
         }
 

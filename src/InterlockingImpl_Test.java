@@ -116,4 +116,19 @@ public class InterlockingImpl_Test {
         assertEquals(3, interlockingImpl.getTrain("Train 2"));
     }
 
+    //A freight train should stay at 4 when there is a train in 1
+    @Test
+    public void testJunction(){
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 4, 3);
+        interlockingImpl.addTrain("Train 2", 1, 8);
+        
+        String[] train1 = {"Train 1"};
+        int moves = interlockingImpl.moveTrains(train1);
+        assertEquals(4, interlockingImpl.getTrain("Train 1"));
+        assertEquals(0, moves);
+    }
+
+
+
 }

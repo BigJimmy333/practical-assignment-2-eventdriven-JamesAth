@@ -107,6 +107,11 @@ There are finite starting and ending positions so that needs to be validated.
 - A train can only move if the section it is moving to is empty
 - When a train reaches its destination, its removed when that transition is fired and will return -1
 
+* Passenger train priority
+From the petri net diagram we have implemented priority for passengers
+- This means a train at section 3 can only move when 1 and 6 are empty 
+as well as there destination point 
+
 
 # GetPath
 This is a bfs search in order to find if a destination section can be reached from an entry position
