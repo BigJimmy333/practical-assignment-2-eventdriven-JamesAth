@@ -97,6 +97,7 @@ public class InterlockingImpl_Test {
         assertEquals(1, moves);
     }
 
+    //Test if a train can move into an occupied section 
     @Test 
     public void moveBlockedTrain(){
         InterlockingImpl interlockingImpl = new InterlockingImpl();
@@ -116,6 +117,7 @@ public class InterlockingImpl_Test {
         assertEquals(3, interlockingImpl.getTrain("Train 2"));
     }
 
+    //Priority testing
     //A freight train should stay at 4 when there is a train in 1
     @Test
     public void testJunction(){
@@ -129,6 +131,18 @@ public class InterlockingImpl_Test {
         assertEquals(0, moves);
     }
 
+    //Priority testing
+    //If sections 1 and 6 are empty, a freight train should be able to move
+    @Test 
+    public void testFreightTrainMove(){
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 4, 3);
+
+        String[] train1 = {"Train 1"};
+        int moves = interlockingImpl.moveTrains(train1);
+        assertEquals(3, interlockingImpl.getTrain("Train 1"));
+        assertEquals(1, moves);
+    }
 
 
 }
