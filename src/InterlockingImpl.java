@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-
+/**
+ * 
+ * InterlockingImpl
+ * This class simulates a petri net of trains entering a system from two different directions
+ * and navigating it through different sections and types of track to get to there destination
+ * and avoiding collisions 
+ */
 public class InterlockingImpl implements Interlocking {
 
     //Create a value for each place to track train positions
@@ -20,6 +26,11 @@ public class InterlockingImpl implements Interlocking {
     private Map<Integer, List<Integer>> southPath = new HashMap<>();
     private Map<Integer, List<Integer>> northPath = new HashMap<>();
 
+    
+    /**
+     * Constructs the sections that a train can take and 
+     * the paths that a train heading north and south can take
+     */
     public InterlockingImpl() {
         //11 because theres 11 places in the petri net
         for (int i = 1; i <= 11; i++){
@@ -224,7 +235,14 @@ public class InterlockingImpl implements Interlocking {
         return -1;
     }
 
-    //A bfs search to find if a given entry section can make it to the destination
+    /**
+     * A bfs to find if a given entry section can make it to the destination
+     * 
+     * @param   entryTrackSection The id number of the track section that the train is entering into.
+     * @param   destinationTrackSection The id number of the track section that the train should exit from.
+     * @param   path The directional map of where the train is going, either north or south.
+     * @return  The path that the train needs to go from the entry to the exit
+     */
     private List<Integer> getPath(int entryTrackSection, int destinationTrackSection, Map<Integer, List<Integer>> path){
         Queue<Integer> queue = new LinkedList<Integer>();
 
