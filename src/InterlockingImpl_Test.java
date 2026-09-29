@@ -186,4 +186,27 @@ public class InterlockingImpl_Test {
     }
 
     //Test when a train frees a section another train can enter it in the same call
+    @Test 
+    public void testTrainBehindEachOther(){
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 11, 3);
+
+        String[] train = {"Train 1"};
+        int moves = interlockingImpl.moveTrains(train);
+        assertEquals(7, interlockingImpl.getTrain("Train 1"));
+        assertEquals(1, moves);
+
+        interlockingImpl.addTrain("Train 2", 11, 3);
+        String[] trains = {"Train 1", "Train 2"};
+        moves = interlockingImpl.moveTrains(trains);
+        assertEquals(3, interlockingImpl.getTrain("Train 1"));
+        assertEquals(7, interlockingImpl.getTrain("Train 2"));
+        assertEquals(2, moves);
+
+        moves = interlockingImpl.moveTrains(trains);
+        assertEquals(-1, interlockingImpl.getTrain("Train 1"));
+        assertEquals(3, interlockingImpl.getTrain("Train 2"));
+        assertEquals(2, moves);
+    }
+
 }
