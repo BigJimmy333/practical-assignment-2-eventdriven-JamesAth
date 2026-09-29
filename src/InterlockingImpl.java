@@ -127,6 +127,7 @@ public class InterlockingImpl implements Interlocking {
             }
         }
 
+        // === Get multiple destinations ===
         //Track if multiple trains want the same destination 
         Map<Integer, Integer> sectionCounter = new HashMap<>();
         for (Integer section : trainsDestination.values()){
@@ -140,6 +141,23 @@ public class InterlockingImpl implements Interlocking {
                     sectionCounter.put(section, 1);
                 }
             }
+        }
+
+        // === Remove trains with multiple destinations ===
+        //The list of trains to remove because they have the same destination as another train
+        List<String> removeTrains = new ArrayList<>(); 
+        //If the section has more than 1 value (two or more trains going there)
+        //Add it to the list to remove
+        for(Map.Entry<String, Integer> entry : trainsDestination.entrySet()){
+            int section = entry.getValue();
+            if(section != -1 && sectionCounter.get(section) > 1){
+                removeTrains.add(entry.getKey());
+            }
+        }
+
+        //Remove trains heading to the same destination
+        for(String train : removeTrains){
+            trainsDestination.remove(train);
         }
 
         return trainsMoved;
