@@ -126,5 +126,4 @@ A train can move into a section if a previous train frees that section
 If two trains try to move to the same spot, it results in a deadlock, and neither moves.
 - Need to check the destination of each train that wants to move
 - If two or more have the same destination we do not move any of those trains
-
-
+ 
