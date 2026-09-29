@@ -160,6 +160,23 @@ public class InterlockingImpl implements Interlocking {
             trainsDestination.remove(train);
         }
 
+        // === Move the trains ===
+        for(Map.Entry<String, Integer> entry : trainsDestination.entrySet()) {
+            String trainName = entry.getKey();
+            int currentSection = getTrain(trainName);
+            int trainDestination = entry.getValue();
+            places.put(currentSection, null);
+
+            if (trainDestination == -1){
+                routes.remove(trainName);
+            }
+            else {
+                places.put(trainDestination, trainName);
+            }
+
+            trainsMoved++;
+        }
+
         return trainsMoved;
         
     }
