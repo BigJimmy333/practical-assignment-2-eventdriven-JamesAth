@@ -1,0 +1,166 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red16\green8\blue63;\red255\green255\blue255;\red0\green0\blue0;
+\red173\green176\blue178;\red15\green16\blue16;\red120\green129\blue140;\red67\green192\blue160;\red70\green137\blue204;
+\red198\green146\blue255;\red253\green149\blue70;\red189\green198\blue208;\red202\green202\blue202;\red183\green111\blue179;
+\red150\green204\blue255;\red167\green197\blue152;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c7843\c5882\c31373;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
+\cssrgb\c73333\c74510\c74902;\cssrgb\c7059\c7451\c7843;\cssrgb\c54510\c58039\c61961;\cssrgb\c30588\c78824\c69020;\cssrgb\c33725\c61176\c83922;
+\cssrgb\c82353\c65882\c100000;\cssrgb\c100000\c65098\c34118;\cssrgb\c78824\c81961\c85098;\cssrgb\c83137\c83137\c83137;\cssrgb\c77255\c52549\c75294;
+\cssrgb\c64706\c83922\c100000;\cssrgb\c70980\c80784\c65882;\cssrgb\c100000\c100000\c99956;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18660\viewh18040\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1.1 AI version used.\
+Claude Opus 5\
+\
+1.2 When was used.\
+18th September 5:45pm\
+\
+1.3. How helped with the assignment 
+\f1\b (Design review)
+\f0\b0 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 \cb1 After implementing most of my design for the petri net, (I thought I had completed all of it, but I had not implemented passenger priority yet). I had Claude check to make sure the design was correct before I started applying it to code otherwise, I would have an incorrect design and incorrect code. I gave Claude the scenario, what needed to happen and my diagram which it then explained to me it had found a few errors. \
+\'a0\
+Firstly, I was outputting and inputting from the same transition connected to P3. This was a simple fix by creating another transition that output to P3. This was the same case to P11 which did have an input transition, only an output. I then changed the diagram to include an input transition as well.\
+\'a0\
+Secondly, t2 and t6 did not have any directional output when it was first implemented which was a mistake. It then told me I could the direction places that I had created between p4 and p3 for those transitions. I then added two arcs, one from p3 south to t2 and another from t7 to p7-exit North. It also mentioned t5 had no directional check, I then created a new place to check for this.
+\fs32 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\
+\
+\
+\
+2.1 AI version used.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 Claude Opus 5\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 2.2 When was used.\
+September 22nd 10:15pm\
+\
+2.3. How helped with the assignment 
+\f1\b (Brainstorming)
+\f0\b0 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 \cb1 Once I had completed the petri net design, I didn\'92t actually know how to start the code. Petri nets was a new concept and something that I had not coded before. I started by just adding the interface methods to interlockingImpl but after that did not really know where to start. "I am having trouble implementing my petri net design and I do not know where to start, can you give me a few ideas without giving me any code."\
+\'a0\
+It explained there were multiple ways of implementing the petri net, I could literally implement the petri net with places, transition and tokens or I could just keep track of where each train is and which sections it could move to. I decided to go with the second option because it seemed like the simpler alternative and coding all of the places and transitions seemed like it was inefficient way of doing it. Because of this decision it said I should start with keeping track of the places and if a train is on a place. \
+\uc0\u8232 I then later updated the planning doc to include the steps of what I thought needed to happen next.
+\fs32 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf2 \cb3 \
+\
+\
+\
+\cf0 \cb1 \kerning1\expnd0\expndtw0 3.1 AI version used.\
+Claude Opus 5\
+\
+3.2 When was used.\
+September 26nd 11:00am\
+\
+3.3. How helped with the assignment 
+\f1\b (Debugging)
+\f0\b0 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb1 I had created this test as shown below to test if a train was added correctly by getting the section it should be on and then doing the opposite check if section 3 had train 1 on that place. \cf2 \cb3 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf5 \cb6 \outl0\strokewidth0 \strokec5  \cf7 \strokec7 // === ADD TRAIN TESTS ===\cf5 \cb1 \strokec5 \
+\cb6     \cf7 \strokec7 //Test when adding a train, it returns its place and its name \cf5 \cb1 \strokec5 \
+\cb6     @\cf8 \strokec8 Test\cf5 \cb1 \strokec5 \
+\cb6     \cf9 \strokec9 public\cf5 \strokec5  \cf8 \strokec8 void\cf5 \strokec5  \cf10 \strokec10 testAddTrain\cf5 \strokec5 ()\{\cb1 \
+\cb6         \cf8 \strokec8 InterlockingImpl\cf11 \strokec11  \cf12 \strokec12 interlockingImpl\cf11 \strokec11  \cf13 \strokec13 =\cf5 \strokec5  \cf14 \strokec14 new\cf5 \strokec5   \cf10 \strokec10 InterlockingImpl\cf5 \strokec5 ();\cb1 \
+\cb6         \cf12 \strokec12 interlockingImpl\cf5 \strokec5 .\cf10 \strokec10 addTrain\cf5 \strokec5 (\cf15 \strokec15 "Train 1"\cf5 \strokec5 , \cf16 \strokec16 3\cf5 \strokec5 , \cf16 \strokec16 0\cf5 \strokec5 );\cb1 \
+\cb6         \cf10 \strokec10 assertEquals\cf5 \strokec5 (\cf15 \strokec15 "Train 1"\cf5 \strokec5 , \cf12 \strokec12 interlockingImpl\cf5 \strokec5 .\cf10 \strokec10 getSection\cf5 \strokec5 (\cf16 \strokec16 3\cf5 \strokec5 ));\cb1 \
+\cb6         \cf10 \strokec10 assertEquals\cf5 \strokec5 (\cf16 \strokec16 3\cf5 \strokec5 , \cf12 \strokec12 interlockingImpl\cf5 \strokec5 .\cf10 \strokec10 getTrain\cf5 \strokec5 (\cf15 \strokec15 "Train 1"\cf5 \strokec5 ));\cb1 \
+\cb6     \}\cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf2 \cb3 \outl0\strokewidth0 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb1 However, the test was failing and was not working as expected, I thought it was an issue with the test itself but could not figure it out. I asked Claude for help debugging by asking \'93I have implemented this test to see if a train successfully gets added to a section and if I can find the train by looking up the section it is on but it is not working, could you please tell me why its failing.\'94 \cf2 \cb3 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 \cb1 It told me the test looks correct so it must not be anything to do with that and asked to see the other methods. I gave it access to InterlockingImpl, and it then found the error. As I was looping over all the sections to see if a train is in there or not, I was using .contains(), the loop starts at the first section and its value is null because there is no train in there, the code then throws a null pointer exception. It also told me to use .equals() instead so that null gets passed into the method instead of being called by the method. I applied the fix and the test worked.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \cb3 \
+\
+\
+\
+\cf0 \cb1 \kerning1\expnd0\expndtw0 4.1 AI version used.\
+Claude Opus 5\
+\
+4.2 When was used.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 September 26nd 12:15pm\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 4.3. How helped with the assignment 
+\f1\b (Brainstorming)
+\f0\b0 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 \cb1 When I was up to implementing the move train method I needed to brainstorm again on how I was going to implement this method. I asked Claude how I should go with implementing this method. It said I should start with a structure that keeps track of all the connections in my petri net design. This was actually really helpful information. I added to my planning document on how I should do this and also realised that validation needs to be done to check if the entry track position and destination points are valid and that the two variables can be reached from each other. 
+\fs32 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf2 \cb3 \
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \
+\cf0 \cb1 \kerning1\expnd0\expndtw0 5.1 AI version used.\
+Claude Opus 5\
+\
+5.2 When was used.\
+September 27nd 10:30am\
+\
+5.3. How helped with the assignment 
+\f1\b (Brainstorming)
+\f0\b0 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 \cb1 I needed a way to see if a train from a given starting position and destination was actually reachable from each other. I did not know how to go about this so I asked Claude how I could do this. It responded with I could do a breadth first search (bfs) to see if the destination can be reached from the starting position. I was very familiar with a bfs, I had implemented it before so I knew it would not be too difficult to add, and it was something that was recently taught to us again in algorithms and data structures which was a good refresher. Because I had already created a bfs in a previous course I opened that code back up and used aspects of that to implement the new one. The great thing about the bfs is that it does not just calculate if the two positions meet each other but also reconstructs the route. Hence it is also used as a route for the trains which lets me know where they need to be moved to. \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \cb17 \
+\
+\
+\
+\
+\cb1 \kerning1\expnd0\expndtw0 6.1 AI version used.\
+6.2 When was used.\
+6.3. How helped with the assignment 
+\f1\b (Concept Clarification)
+\f0\b0 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 \cb1 After uploading my code to Grade scope, I still had three tests that were not passing. After looking at the errors and the forum posts my code was missing two things.\
+\pard\pardeftab720\li960\fi-480\qj\partightenfactor0
+\cf4 -
+\f3 \'a0 
+\f0 There was no priority check so a freight train going from 3-4 or 4-3 could move first instead of a passenger train at 6 or 1. \
+-
+\f3 \'a0  
+\f0 If two trains are moving to the same section neither should move and it should result in a deadlock.\
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 I knew how to fix the first problem. I needed a condition that checks if a train is on either 3 or 4 and if there is a train either on 6 or 1. If there is a train on those sections the train on 3 and 4 cannot pass. The second problem however, I could not figure out, so I described it to Claude. It told me I needed to know where every train wanted to go before actually moving it and broke it down into three parts. \
+	1. Work out where each train wants to go and record it\
+	2. Count how many trains want to go into each section. If more than one train wants to go into a certain section, delete it so they don\'92t move\
+	3. Move the trains \
+\pard\pardeftab720\li960\fi-480\qj\partightenfactor0
+\cf4 \
+}
