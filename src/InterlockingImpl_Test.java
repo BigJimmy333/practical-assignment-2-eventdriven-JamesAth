@@ -166,4 +166,24 @@ public class InterlockingImpl_Test {
          assertEquals(2, moves);
 
     }
+
+    //Unavoidable deadlock test
+    @Test 
+    public void testUnavoidableDeadlock(){
+        InterlockingImpl interlockingImpl = new InterlockingImpl();
+        interlockingImpl.addTrain("Train 1", 11, 3);
+        interlockingImpl.addTrain("Train 2", 3, 11);
+
+        //Trains should not be able to move
+        String[] trains = {"Train 1", "Train 2"};
+        int moves = interlockingImpl.moveTrains(trains);
+        assertEquals(11, interlockingImpl.getTrain("Train 1"));
+        assertEquals(3, interlockingImpl.getTrain("Train 2"));
+        assertEquals(0, moves);
+
+        moves = interlockingImpl.moveTrains(trains);
+        assertEquals(0, moves);
+    }
+
+    //Test when a train frees a section another train can enter it in the same call
 }
