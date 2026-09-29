@@ -119,7 +119,7 @@ public class InterlockingImpl implements Interlocking {
                 && (getSection(1) != null || getSection(6) != null);
 
                 //If there is no train in the next section and the junction is not blocked
-                if (places.get(nextSection) == null && !junctionBlocked){
+                if (!junctionBlocked){
                     trainsDestination.put(name, nextSection);
                 }
 
@@ -161,20 +161,26 @@ public class InterlockingImpl implements Interlocking {
         }
 
         // === Move the trains ===
-        for(Map.Entry<String, Integer> entry : trainsDestination.entrySet()) {
-            String trainName = entry.getKey();
-            int currentSection = getTrain(trainName);
-            int trainDestination = entry.getValue();
-            places.put(currentSection, null);
+        //Loop through the trainNames
+        for(String trainName : trainNames) {
+            //If two or more trains are going to the same destination we do not move any
+            if(trainsDestination.containsKey(trainName)){
+                int currentSection = getTrain(trainName);
+                int trainDestination = trainsDestination.get(trainName);
 
-            if (trainDestination == -1){
-                routes.remove(trainName);
+                //If leaving the system
+                if (trainDestination == -1){
+                    places.put(currentSection, null);
+                    routes.remove(trainName);
+                    trainsMoved++;
+                }
+                //If the destination is free
+                else if(places.get(trainDestination) == null) {
+                    places.put(currentSection, null);
+                    places.put(trainDestination, trainName);
+                    trainsMoved++;
+                }
             }
-            else {
-                places.put(trainDestination, trainName);
-            }
-
-            trainsMoved++;
         }
 
         return trainsMoved;
